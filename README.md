@@ -1,11 +1,3 @@
-# ACCAD Trace Kasindi
+# PWA Kasindi
 
-PWA de vérification des reçus pour les agents du site de Kasindi.
-
-## Import GitHub
-
-Importer le contenu de ce dossier dans un dépôt GitHub nommé `ACCAD-TRACE-KASINDI`.
-
-## Test local
-
-Servir le dossier avec un serveur HTTP local, puis ouvrir `index.html` via ce serveur. L’application utilise l’URL Apps Script définie dans `web-core/config.js`.
+Application de vérification des reçus et d’enregistrement des passages. Le scanner et la vérification hors ligne seront développés après le socle cryptographique.
