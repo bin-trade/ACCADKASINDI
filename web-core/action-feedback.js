@@ -51,10 +51,13 @@
   const observer = new MutationObserver(() => {
     const statuses = [...document.querySelectorAll('.status')].filter((node) => !node.hidden && node.textContent.trim());
     const latest = statuses[statuses.length - 1];
-    if (!latest) return;
-    const text = latest.textContent.trim();
-    if (/cours|attente|chargement|recherche|vérification/i.test(text)) return;
-    document.querySelectorAll('button.is-loading').forEach((button) => finish(button, text, /erreur|impossible|refus|invalide/i.test(text)));
+    const text = latest?.textContent.trim() || '';
+    const pending = /en cours|traitement|chargement|recherche|vérification en cours|enregistrement en cours|synchronisation en cours/i.test(text);
+    const completedReceipt = document.querySelector('.receipt');
+    if (pending && !completedReceipt) return;
+    if (!text && !completedReceipt) return;
+    const error = /erreur|impossible|refus|invalide|introuvable|échoué|échec|supérieur au disponible/i.test(text);
+    const message = error ? `Échec : ${text}` : (completedReceipt && !text ? 'Opération terminée. Reçu disponible.' : text);
+    document.querySelectorAll('button.is-loading').forEach((button) => finish(button, message, error));
   });
-  observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['hidden', 'class'] });
-})();
+  observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['hidden', 'class'] });})();
