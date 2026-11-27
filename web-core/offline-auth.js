@@ -32,6 +32,7 @@
     sessionStorage.setItem('accadAgentName', data.profile.nomComplet);
     sessionStorage.setItem('accadRole', data.profile.role);
     sessionStorage.setItem('accadOfflineMode', offline ? '1' : '0');
+    sessionStorage.setItem('accadSessionStartedAt', String(Date.now()));
     document.querySelector('#agent-name').textContent = data.profile.nomComplet;
     document.querySelector('#login-card').hidden = true;
     document.querySelector('#home-card').hidden = false;
