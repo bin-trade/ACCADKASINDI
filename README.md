@@ -1,3 +1,4 @@
-# PWA Kasindi
+# ACCAD Trace Kasindi
 
-Application de vérification des reçus et d’enregistrement des passages. Le scanner et la vérification hors ligne seront développés après le socle cryptographique.
+Version 1.0.3. Dossier prêt à publier tel quel (GitHub Pages, HTTPS obligatoire pour la caméra et l'installation).
+L'adresse du service central se règle dans `web-core/config.js`.
